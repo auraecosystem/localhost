@@ -1373,3 +1373,64 @@ The next stage is the Cinematic Engine, which controls camera movement rather th
 * Transition smoothly between architecture, execution, and metrics views.
 
 That is what gives the visualization the polished feel of a professional operations dashboard rather than a static graph.
+Yes. The more advanced approach is to treat the README and docs/mmd.md as data sources and generate SVG elements from them.
+
+The architecture looks like this:
+
+README.md
+        │
+        ▼
+   Markdown Parser
+        │
+        ▼
+ Mermaid Detection
+        │
+        ▼
+ SVG Generator
+        │
+        ▼
+ Animated Repository Billboard
+
+The basic JavaScript flow is:
+```js
+const BASE = "https://raw.githubusercontent.com/auraecosystem/localhost/main";
+async function loadFile(path) {
+    return await fetch(`${BASE}/${path}`).then(r => r.text());
+}
+async function buildBillboard() {
+    const readme = await loadFile("README.md");
+    const mmd = await loadFile("docs/mmd.md");
+    // Extract Mermaid code blocks
+    const mermaids = [...readme.matchAll(/```mermaid([\s\S]*?)```/g)]
+        .map(m => m[1]);
+    // Do the same for docs/mmd.md
+    mermaids.push(
+        ...[...mmd.matchAll(/```mermaid([\s\S]*?)```/g)]
+            .map(m => m[1])
+    );
+    console.log(mermaids);
+}
+buildBillboard();
+```
+Then render each Mermaid diagram into SVG:
+```html
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({
+    startOnLoad: false,
+    theme: "dark"
+});
+const { svg } = await mermaid.render("repoDiagram", mermaids[0]);
+document.getElementById("svg-container").innerHTML = svg;
+</script>
+```
+Once the SVG is generated, you can:
+
+* Animate glowing “file packets” moving along Mermaid edges.
+* Highlight nodes as files execute.
+* Pulse directories when activity occurs.
+* Show commit and build events.
+* Update the diagram automatically when the repository changes.
+
+This produces the “living repository billboard” concept you described, where the README’s Mermaid workflows are no longer static—they become animated, interactive SVG graphics integrated into your dashboard.
+
