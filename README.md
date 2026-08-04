@@ -6,6 +6,7 @@ $ open https://localhost:8000
 # you got:
 $ open https://localhost8000.com
 localhost:8000
+python3 -m http.server 8000
 ```
   You probably meant to go to localhost:8000, and ended up here by accident.
 
