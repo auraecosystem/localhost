@@ -1,0 +1,1 @@
+$ cat /etc/hosts | tee >( cat > /var/tmp/hosts) > /var/tmp/hosts.2
