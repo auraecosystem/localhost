@@ -1,4 +1,3 @@
-
 header          RCVD_IN_S5HBL   eval:check_rbl_txt('s5hbl', 'all.s5h.net')
 describe        RCVD_IN_S5HBL   Listed at all.s5h.net
 tflags          RCVD_IN_S5HBL   net
