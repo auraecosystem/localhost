@@ -1247,6 +1247,18 @@ flowchart TB
     E8 --> B2
     B6 --> END([Continuous Loop])
     END --> WATCHER
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
+
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
 ```
 
 This diagram establishes a continuous feedback loop:
@@ -1257,3 +1269,107 @@ This diagram establishes a continuous feedback loop:
 4. The billboard updates in real time.
 5. The loop repeats as the application evolves.
  logical diagram would model the Billboard Rendering Pipeline itself—how file cards are created, animated, prioritized, and removed from the display. That pipeline is where the “digital advertising billboard” effect is actually produced.
+
+
+Now we design the Billboard Rendering Pipeline. This is the component that makes the repository feel like a giant LED advertising screen.
+```mermaid
+flowchart LR
+    EVENT[Execution Event]
+    EVENT --> QUEUE[Animation Queue]
+    QUEUE --> PRIORITY[Priority Scheduler]
+    PRIORITY --> CARD[Generate File Card]
+    CARD --> STYLE[Apply Theme]
+    STYLE --> EFFECT[LED Effects]
+    EFFECT --> MOTION[Motion Engine]
+    subgraph SCREEN["Digital Billboard"]
+        S1[Slide In]
+        S2[Expand]
+        S3[Glow]
+        S4[Execute]
+        S5[Transfer Data]
+        S6[Fade]
+        S7[Archive]
+    end
+    MOTION --> S1
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S5
+    S5 --> S6
+    S6 --> S7
+    S7 --> CLEAN[Cleanup]
+    CLEAN --> READY[Ready For Next File]
+    READY --> QUEUE
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
+
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
+```
+File Card Layout
+```svg
+┌─────────────────────────────────────┐
+│ app.js                              │
+├─────────────────────────────────────┤
+│ Status     : Executing              │
+│ Language   : JavaScript             │
+│ Dependencies: 14                    │
+│ Runtime    : 18 ms                  │
+│ CPU        : 3%                     │
+│ Memory     : 41 MB                  │
+├─────────────────────────────────────┤
+│ ▶ Initializing Express              │
+└─────────────────────────────────────┘
+```
+Animation Sequence
+```webp
+Slide In
+      ↓
+Expand
+      ↓
+Glow
+      ↓
+Execute
+      ↓
+Show Data Flow
+      ↓
+Complete
+      ↓
+Shrink
+      ↓
+Leave Screen
+
+Multiple Files
+
+README.md
+        ↓
+package.json
+        ↓
+app.js
+        ↓
+server.js
+        ↓
+database.js
+        ↓
+AI Engine
+```
+Each file moves independently, just like advertisements rotating on a digital billboard, while the active file receives visual emphasis.
+
+Where this leads next
+
+The next stage is the Cinematic Engine, which controls camera movement rather than just file movement. Instead of a fixed view, the display can:
+
+* Pan to the busiest part of the graph.
+* Zoom into the active execution path.
+* Follow data as it flows between modules.
+* Rotate or rearrange the layout dynamically.
+* Transition smoothly between architecture, execution, and metrics views.
+
+That is what gives the visualization the polished feel of a professional operations dashboard rather than a static graph.
