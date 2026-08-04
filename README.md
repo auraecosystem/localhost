@@ -1,6 +1,6 @@
 # host
 
-```
+```bash
 # you wanted:
 $ open https://localhost:8000
 # you got:
@@ -26,69 +26,58 @@ Scripting Languages
 Once your browser has learned localhost8000.com, it will keep suggesting it. To remove the bad entry:
 ———
 
+```mermaid
+flowchart TD
+    A[GitHub Repositories] --> B[GitHub Pages Deployment]
+    B --> C[Domain Registration]
+    C --> D[DNS Configuration]
+    D --> E[Monitoring]
+    D --> H[Cloud Deployment]
+    E --> I[Email Reputation]
+    H --> J[Billing & Logging]
+    A --> F[AI Experiments]
+    F --> G[Research]
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
 
-```.mermaid
-flowchart TD 
-    %% Source Control
-    A[GitHub Repositories<br/>localhost • NextN]
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
 
-    %% Hosting
-    B[GitHub Pages Deployment]
-
-    %% Domain & DNS
-    C[Domain Registration<br/>easyDNS (.cf / .info)]
-    D[DNS Configuration<br/>A • AAAA • CNAME • TXT]
-
-    %% Monitoring
-    E[Infrastructure Monitoring<br/>Spamhaus • MXToolbox • RBL Checker]
-    I[Email Reputation<br/>W3C • Gravatar • SPDX]
-
-    %% Deployment
-    H[Cloud Deployment<br/>Tunnel.to • Fly.io]
-    J[Billing & Logging<br/>The Things Industries<br/>TypeDoc • Logging Library]
-
-    %% AI
-    F[AI Experiments<br/>Kaggle ARC-AGI-3 • modelHai]
-    G[Research Sources<br/>arXiv • Semantic Scholar]
-
-    %% Main Flow
-    A --> B
-    B --> C
-    C --> D
-
-    %% DNS Branches
-    D --> E
-    D --> H
-
-    %% Monitoring
-    E --> I
-
-    %% Deployment
-    H --> J
-
-    %% AI Branch
-    A --> F
-    F --> G
-
-    %% Optional Feedback
-    G -. Research informs .-> A
-    J -. Logs & Metrics .-> A
-    I -. Reputation Reports .-> D
-
-    %% Styling
-    classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
-    classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
-    classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
-    classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
-    classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
-
-    class A repo;
-    class B,H,J deploy;
-    class C,D dns;
-    class E,I monitor;
-    class F,G ai;
 ```
+—————
 
+```mermaid
+flowchart TD
+    A[GitHub Repositories] --> B[GitHub Pages]
+    B --> C[Domain Registration]
+    C --> D[DNS Configuration]
+    D --> E[Monitoring]
+    D --> H[Deployment]
+    E --> I[Email Reputation]
+    H --> J[Billing and Logging]
+    A --> F[AI Experiments]
+    F --> G[Research]
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
+
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
+
+```
 
 # Chrome, Edge, Brave (any Chromium):
 
@@ -117,6 +106,19 @@ C --> D[DNS Config: CNAME + A Records]
     D --> H[Deployment: Tunnel.to + Fly.io]
     E --> I[Email Reputation & Lists: W3C, Gravatar, SPDX]
     H --> J [Billing & Logging: The Things Industries, TypeDoc, Logging Library]
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
+
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
+
 ```
 
 
@@ -181,6 +183,32 @@ A Records (for root domain without www):
 
 ---
 
+```mermaid
+flowchart TD
+    A[GitHub Repositories] --> B[GitHub Pages Deployment]
+    B --> C[Domain Registration]
+    C --> D[DNS Configuration]
+    D --> E[Monitoring]
+    D --> H[Cloud Deployment]
+    E --> I[Email Reputation]
+    H --> J[Billing & Logging]
+    A --> F[AI Experiments]
+    F --> G[Research]
+
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
+
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
+```
+
 ⚙️ GitHub Pages Setup
 
 1. Go to Settings → Pages in your repo.
@@ -204,7 +232,33 @@ A Records (for root domain without www):
 
 
 ---
+```mermaid
+flowchart TD
+    A[GitHub Repositories] --> B[GitHub Pages Deployment]
+    B --> C[Domain Registration]
+    C --> D[DNS Configuration]
+    D --> E[Infrastructure Monitoring]
+    D --> H[Cloud Deployment]
+    E --> I[Email Reputation]
+    H --> J[Billing and Logging]
+    A --> F[AI Experiments]
+    F --> G[Research Sources]
+    G -.-> A
+    J -.-> A
+    I -.-> D
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
 
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
+```
 
 localhost9000.com 
 localhost3000.com 
@@ -259,8 +313,10 @@ If you reached this page because your local server isn't actually running, here 
 
 
 # Workflow Diagram
-```svg   
-                    ┌─────────────────────────┐
+
+```svg
+
+        ┌─────────────────────────┐
                     │     GitHub Repositories │
                     │ localhost • NextN       │
                     └────────────┬────────────┘
@@ -313,14 +369,26 @@ If you reached this page because your local server isn't actually running, here 
    │ arXiv                    │
    │ Semantic Scholar         │
    └──────────────────────────┘
-   
+
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
+
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
 ```
 ——————
 
 
-```stl
+```svg
 flowchart TD
-    %% Source Control
+ %% Source Control
     A[GitHub Repositories<br/>localhost • NextN]
 
     %% Hosting
@@ -365,21 +433,32 @@ flowchart TD
     G -. Research informs .-> A
     J -. Logs & Metrics .-> A
     I -. Reputation Reports .-> D
-
     %% Styling
     classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
     classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
     classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
     classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
     classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
-
     class A repo;
     class B,H,J deploy;
     class C,D dns;
     class E,I monitor;
     class F,G ai;
-——-
+%% Styling
+classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
+classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
+classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
+classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
+classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
+
+class A repo;
+class B,H,J deploy;
+class C,D dns;
+class E,I monitor;
+class F,G ai;
 ```
+
+
 The dev server isn't started. Sounds obvious, but it's the most common cause - check the terminal tab you thought it was running in.
 Something else is bound to port 8000.Check with `lsof -i :8000 (macOS / Linux) or netstat -ano | findstr :8000 (Windows)`
 . Kill the stray process, or run your server on a different port[.
