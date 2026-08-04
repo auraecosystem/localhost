@@ -1,0 +1,20 @@
+header          RCVD_IN_S5HBL   eval:check_rbl_txt('s5hbl', 'all.s5h.net')
+describe        RCVD_IN_S5HBL   Listed at all.s5h.net
+tflags          RCVD_IN_S5HBL   net
+score           RCVD_IN_S5HBL   0 3.0 0 3.0
+function is_blacklisted($ip) {
+    $dnsbl_check=array( "all.s5h.net", "sbl.spamhaus.org" );
+    if( $ip ) {
+        $quads=explode( ".", $ip );
+        $rip=$quads[3].".".$quads[2].".".$quads[1].".".$quads[0];
+        for( $i=0; $i&lt;count($dnsbl_check); $i++ ) {
+            if( checkdnsrr( $rip.".".$dnsbl_check[$i], "A" ) ) {
+                return( true ); // return on first match
+            }
+        }
+    }
+    return( false );
+}
+FEATURE(`enhdnsbl', `all.s5h.net', ``Mail from $&{client_addr} rejected, see http://s5h.net/rbl'',`t')dnl
+
+deny dnslists = all.s5h.net
