@@ -1,0 +1,2 @@
+( /bin/echo -e "Subject: My favourite file\n\n" ; cat ~/.vimrc ) \
+| /usr/sbin/sendmail -fme@example.test me@example.test
