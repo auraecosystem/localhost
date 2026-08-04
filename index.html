@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Repository Billboard Workflow</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050510;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    color:white;
+}
+
+svg{
+    width:100vw;
+    height:100vh;
+    background:
+    radial-gradient(circle at center,#121236,#050510);
+}
+
+.node{
+    fill:#1c1f35;
+    stroke:#00e5ff;
+    stroke-width:3;
+    rx:15;
+}
+
+.label{
+    fill:white;
+    font-size:16px;
+    text-anchor:middle;
+    dominant-baseline:middle;
+}
+
+.link{
+    stroke:#00d9ff;
+    stroke-width:3;
+    fill:none;
+}
+
+.packet{
+    fill:#00ff95;
+    filter:url(#glow);
+}
+
+.packet2{
+    fill:#ffea00;
+    filter:url(#glow);
+}
+
+.packet3{
+    fill:#ff4f8b;
+    filter:url(#glow);
+}
+
+.title{
+    font-size:32px;
+    fill:#00e5ff;
+    text-anchor:middle;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<svg viewBox="0 0 1600 900">
+
+<defs>
+
+<filter id="glow">
+<feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+<feMerge>
+<feMergeNode in="coloredBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+
+</defs>
+
+<text x="800" y="70" class="title">
+AURA REPOSITORY LIVE WORKFLOW
+</text>
+
+<!-- Links -->
+
+<path id="p1" class="link"
+d="M220 200 L500 200"/>
+
+<path id="p2" class="link"
+d="M620 200 L900 200"/>
+
+<path id="p3" class="link"
+d="M1020 200 L1300 200"/>
+
+<path id="p4" class="link"
+d="M1300 240 L1300 520"/>
+
+<path id="p5" class="link"
+d="M1180 620 L820 620"/>
+
+<path id="p6" class="link"
+d="M700 620 L360 620"/>
+
+<path id="p7" class="link"
+d="M220 540 L220 260"/>
+
+<!-- Nodes -->
+
+<rect class="node" x="120" y="150" width="200" height="100"/>
+<text class="label" x="220" y="200">GitHub Repo</text>
+
+<rect class="node" x="420" y="150" width="200" height="100"/>
+<text class="label" x="520" y="200">Source Files</text>
+
+<rect class="node" x="820" y="150" width="200" height="100"/>
+<text class="label" x="920" y="200">Parser</text>
+
+<rect class="node" x="1200" y="150" width="200" height="100"/>
+<text class="label" x="1300" y="200">Build</text>
+
+<rect class="node" x="1100" y="570" width="200" height="100"/>
+<text class="label" x="1200" y="620">Deploy</text>
+
+<rect class="node" x="700" y="570" width="200" height="100"/>
+<text class="label" x="800" y="620">Execution</text>
+
+<rect class="node" x="260" y="570" width="200" height="100"/>
+<text class="label" x="360" y="620">Monitoring</text>
+
+<!-- Moving Files -->
+
+<circle r="10" class="packet">
+<animateMotion dur="8s" repeatCount="indefinite">
+<mpath href="#p1"/>
+</animateMotion>
+</circle>
+
+<circle r="10" class="packet">
+<animateMotion dur="8s" begin="1s" repeatCount="indefinite">
+<mpath href="#p2"/>
+</animateMotion>
+</circle>
+
+<circle r="10" class="packet">
+<animateMotion dur="8s" begin="2s" repeatCount="indefinite">
+<mpath href="#p3"/>
+</animateMotion>
+</circle>
+
+<circle r="10" class="packet2">
+<animateMotion dur="7s" repeatCount="indefinite">
+<mpath href="#p4"/>
+</animateMotion>
+</circle>
+
+<circle r="10" class="packet2">
+<animateMotion dur="7s" begin="1.5s" repeatCount="indefinite">
+<mpath href="#p5"/>
+</animateMotion>
+</circle>
+
+<circle r="10" class="packet3">
+<animateMotion dur="6s" repeatCount="indefinite">
+<mpath href="#p6"/>
+</animateMotion>
+</circle>
+
+<circle r="10" class="packet3">
+<animateMotion dur="6s" begin="2s" repeatCount="indefinite">
+<mpath href="#p7"/>
+</animateMotion>
+</circle>
+
+</svg>
+
+</body>
+</html>
