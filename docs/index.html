@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Repository Documentation</title>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<style>
+body{
+    background:#0d1117;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    margin:0;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    height:100vh;
+}
+
+.panel{
+    overflow:auto;
+    padding:20px;
+    border-right:1px solid #333;
+}
+
+h1{
+    color:#58a6ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="panel">
+        <h1>README.md</h1>
+        <div id="readme"></div>
+    </div>
+
+    <div class="panel">
+        <h1>docs/mmd.md</h1>
+        <div id="mmd"></div>
+    </div>
+</div>
+
+<script>
+async function loadMarkdown(file,id){
+    const text = await fetch(file).then(r => r.text());
+    document.getElementById(id).innerHTML = marked.parse(text);
+}
+
+loadMarkdown("README.md","readme");
+loadMarkdown("docs/mmd.md","mmd");
+</script>
+
+</body>
+</html>
