@@ -463,5 +463,91 @@ The dev server isn't started. Sounds obvious, but it's the most common cause - c
 Something else is bound to port 8000.Check with `lsof -i :8000 (macOS / Linux) or netstat -ano | findstr :8000 (Windows)`
 . Kill the stray process, or run your server on a different port[.
 The server is listening on the wrong interface. If it's bound to 0.0.0.0 it's reachable; if it's only on a specific IP, localhost may not resolve to it. Re-bind to [127.0.0.1 or 0.0.0.0.] HTTPS vs HTTP mismatch. Most local dev servers serve plain HTTP. If your browser is rewriting to (https://localhost8000.com), force (http:// explicitly).
+```mermaid
+flowchart LR
+
+    %% Users
+    U[Developers]
+
+    %% Repositories
+    subgraph REPOS["Repository Ecosystem"]
+        R1[localhost]
+        R2[NextN]
+        R3[QUBUHUB]
+        R4[Other Repositories]
+    end
+
+    %% Core Engine
+    subgraph CORE["Core Intelligence"]
+        C1[Repository Scanner]
+        C2[Dependency Graph]
+        C3[Execution Engine]
+        C4[Knowledge Graph]
+        C5[AI Copilot]
+    end
+
+    %% Runtime
+    subgraph RUNTIME["Runtime"]
+        T1[Frontend]
+        T2[Backend]
+        T3[Database]
+        T4[AI Services]
+        T5[APIs]
+    end
+
+    %% Billboard
+    subgraph BILLBOARD["Live Billboard"]
+        B1[LED Display]
+        B2[Moving Files]
+        B3[Execution Flow]
+        B4[Timeline]
+        B5[Metrics]
+    end
+
+    %% Operations
+    subgraph OPS["Operations"]
+        O1[Tests]
+        O2[Build]
+        O3[Deploy]
+        O4[Monitoring]
+        O5[Security]
+    end
+
+    U --> R1
+    U --> R2
+    U --> R3
+    U --> R4
+
+    R1 --> C1
+    R2 --> C1
+    R3 --> C1
+    R4 --> C1
+
+    C1 --> C2
+    C2 --> C3
+    C3 --> C4
+    C4 --> C5
+
+    C3 --> T1
+    C3 --> T2
+    C3 --> T3
+    C3 --> T4
+    C3 --> T5
+
+    T1 --> B1
+    T2 --> B2
+    T3 --> B3
+    T4 --> B4
+    T5 --> B5
+
+    C5 --> O1
+    O1 --> O2
+    O2 --> O3
+    O3 --> O4
+    O4 --> O5
+
+    O5 -. Feedback .-> C1
+    B5 -. Live Insights .-> U
+```
 <div class="gravatar-hovercard" style="width: 320px; min-width: 320px; max-width: 320px; background-color: #fff; border: 1px solid #d8dbdd; border-radius: 4px; overflow: hidden; box-sizing: border-box;"> <div style="padding: 16px;"> <img src="https://0.gravatar.com/avatar/b4b17e22bff2fc2f31b44f38d499c1ec813b464635d0c7e923755ffad314be6c?s=256&d=initials" width="64" height="64" alt="Seriki yakub" style="margin-bottom: 8px; border-radius: 50%" > <div style="color: #000; font-size: 20px; font-weight: 700; line-height: 120%; margin: 0; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; "> Seriki yakub </div> <div style="color: #707070;font-size: 14px; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; "> CEO, Qubuhub/fluukpe/auraecosystem </div> <div style="color: #707070; font-size: 14px; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; "> Ng </div> <a href="https://gravatar.com/qubuhubincs?utm_source=email_signature" target="_blank" style="display: block; color: #707070; margin-top: 8px; font-size: 14px; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; " > gravatar.com/qubuhubincs </a> </div> <div style="background: linear-gradient(138deg, rgba(15, 44, 133, 1) 0%, rgba(142, 48, 112) 55%, rgba(71, 34, 44, 1) 100%); height: 4px; line-height: 4px;" > &nbsp; </div></div>
 
