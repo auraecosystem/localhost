@@ -369,7 +369,6 @@ If you reached this page because your local server isn't actually running, here 
    │ Research                 │
    │ arXiv                    │
    │ Semantic Scholar         │
-   └──────────────────────────┘
 
 %% Styling
 classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
@@ -383,81 +382,10 @@ class B,H,J deploy;
 class C,D dns;
 class E,I monitor;
 class F,G ai;
+└──────────────────────────┘
 ```
 ——————
 
-
-```svg
-flowchart TD
- %% Source Control
-    A[GitHub Repositories<br/>localhost • NextN]
-
-    %% Hosting
-    B[GitHub Pages Deployment]
-
-    %% Domain & DNS
-    C[Domain Registration<br/>easyDNS (.cf / .info)]
-    D[DNS Configuration<br/>A • AAAA • CNAME • TXT]
-
-    %% Monitoring
-    E[Infrastructure Monitoring<br/>Spamhaus • MXToolbox • RBL Checker]
-    I[Email Reputation<br/>W3C • Gravatar • SPDX]
-
-    %% Deployment
-    H[Cloud Deployment<br/>Tunnel.to • Fly.io]
-    J[Billing & Logging<br/>The Things Industries<br/>TypeDoc • Logging Library]
-
-    %% AI
-    F[AI Experiments<br/>Kaggle ARC-AGI-3 • modelHai]
-    G[Research Sources<br/>arXiv • Semantic Scholar]
-
-    %% Main Flow
-    A --> B
-    B --> C
-    C --> D
-
-    %% DNS Branches
-    D --> E
-    D --> H
-
-    %% Monitoring
-    E --> I
-
-    %% Deployment
-    H --> J
-
-    %% AI Branch
-    A --> F
-    F --> G
-
-    %% Optional Feedback
-    G -. Research informs .-> A
-    J -. Logs & Metrics .-> A
-    I -. Reputation Reports .-> D
-    %% Styling
-    classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
-    classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
-    classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
-    classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
-    classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
-    class A repo;
-    class B,H,J deploy;
-    class C,D dns;
-    class E,I monitor;
-    class F,G ai;
-%% Styling
-classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
-classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
-classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
-classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
-classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
-
-class A repo;
-class B,H,J deploy;
-class C,D dns;
-class E,I monitor;
-class F,G ai;
-```
 
 
 The dev server isn't started. Sounds obvious, but it's the most common cause - check the terminal tab you thought it was running in.
