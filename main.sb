@@ -1,0 +1,100 @@
+' ===================================================
+'  Aura Engine CLI & Graphics - Main.sb
+' ===================================================
+
+' 1. INITIALIZATION & WINDOW SETUP
+SetupWindow()
+
+' 2. DISPLAY MAIN MENU IN TEXT WINDOW
+TextWindow.Title = "Aura Engine - Small Basic Edition"
+TextWindow.ForegroundColor = "Cyan"
+TextWindow.WriteLine("=====================================")
+TextWindow.WriteLine("    AURA ENGINE INITIALIZING        ")
+TextWindow.WriteLine("=====================================")
+TextWindow.WriteLine("")
+
+' 3. MAIN LOGIC EXECUTION
+RunBenchmark()
+
+' 4. INTERACTIVE EVENT SETUP
+GraphicsWindow.MouseDown = OnMouseDown
+GraphicsWindow.KeyDown = OnKeyDown
+
+' Keep program listening for events
+TextWindow.ForegroundColor = "Yellow"
+TextWindow.WriteLine("")
+TextWindow.WriteLine("Click inside the Graphics Window or press a key to interact.")
+
+
+' ===================================================
+'  SUBROUTINES
+' ===================================================
+
+Sub SetupWindow
+  GraphicsWindow.Width = 600
+  GraphicsWindow.Height = 400
+  GraphicsWindow.Title = "Aura Interactive Visualizer"
+  GraphicsWindow.BackgroundColor = "#0D0D0D"
+  
+  ' Draw welcome message on the canvas
+  GraphicsWindow.BrushColor = "#00E5FF"
+  GraphicsWindow.FontSize = 20
+  GraphicsWindow.DrawText(50, 50, "Aura Engine - Visual Canvas")
+  
+  GraphicsWindow.BrushColor = "Gray"
+  GraphicsWindow.FontSize = 14
+  GraphicsWindow.DrawText(50, 90, "Click anywhere on this window to draw a pulse node.")
+EndSub
+
+Sub RunBenchmark
+  TextWindow.ForegroundColor = "White"
+  TextWindow.WriteLine("[RUNNING] Testing string collection speed...")
+  
+  start = Clock.ElapsedMilliseconds
+  
+  ' Simple loop array population
+  items[1] = "cat"
+  items[2] = "dog"
+  items[3] = "leopard"
+  items[4] = "tiger"
+  
+  TextWindow.Write("Items loaded: ")
+  For i = 1 To Array.GetItemCount(items)
+    TextWindow.Write(items[i] + " ")
+  EndFor
+  TextWindow.WriteLine("")
+  
+  finish = Clock.ElapsedMilliseconds
+  elapsed = finish - start
+  
+  TextWindow.ForegroundColor = "Green"
+  TextWindow.WriteLine("[SUCCESS] Completed in " + elapsed + " ms")
+EndSub
+
+
+' ===================================================
+'  EVENT HANDLERS
+' ===================================================
+
+Sub OnMouseDown
+  ' Draw an animated glowing circle where user clicks
+  x = GraphicsWindow.MouseX - 15
+  y = GraphicsWindow.MouseY - 15
+  
+  GraphicsWindow.BrushColor = "#A020F0" ' Aura Dark Purple
+  GraphicsWindow.PenColor = "#00E5FF"   ' Aura Light Cyan
+  GraphicsWindow.FillEllipse(x, y, 30, 30)
+  GraphicsWindow.DrawEllipse(x, y, 30, 30)
+  
+  Sound.PlayClick()
+  TextWindow.WriteLine("[EVENT] Node placed at X:" + GraphicsWindow.MouseX + " Y:" + GraphicsWindow.MouseY)
+EndSub
+
+Sub OnKeyDown
+  lastKey = GraphicsWindow.LastKey
+  If lastKey = "Escape" Then
+    Program.End()
+  Else
+    TextWindow.WriteLine("[KEY PRESS] Key detected: " + lastKey)
+  EndIf
+EndSub
