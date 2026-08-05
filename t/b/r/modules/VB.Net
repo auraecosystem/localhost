@@ -1,0 +1,14 @@
+' MathOperations.vb (The Module)
+Public Module MathOperations
+    Public Function Add(a As Integer, b As Integer) As Integer
+        Return a + b
+    End Function
+End Module
+
+' Main.vb (Consuming the Module)
+Module MainModule
+    Sub Main()
+        Dim result As Integer = MathOperations.Add(2, 3)
+        Console.WriteLine(result)
+    End Sub
+End Module
