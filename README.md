@@ -129,32 +129,32 @@ class F,G ai;
 For `.cf` or `.info` domains
 
 CNAME Record (for www subdomain):
-```txt
+```conf
 • Name/Host: www
 • Value/Target: auraecosystem.github.io
-
+```
 
 A Records (for root domain without www):
-
+```txt
 • Name/Host: @
 • Values:• 185.199.108.153
 • 185.199.109.153
 • 185.199.110.153
 • 185.199.111.153
-
----
 ```
 
 ⚙️ GitHub Pages Setup
-``
+
 1. Go to Settings → Pages in your repo.
 2. Select branch (main) and root folder.
 3. Enter your custom domain (example.cf or example.info).
 4. Enable Enforce HTTPS once DNS propagates.
-``
-[localhost]
-(github.com/auraecosystem/localhost/main/index.html)
----
+
+
+[localhost](github.com/auraecosystem/localhost/main/index.html)
+
+
+
 
 ✅ This file gives you both the visual workflow and the practical DNS instructions in one place.
 
