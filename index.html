@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aura Documentation</title>
+  
+  <!-- Prism Syntax Highlighting -->
   <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism-tomorrow.css" />
   <script src="https://unpkg.com/prismjs/prism.js"></script>
-
 
   <style>
     :root {
@@ -43,6 +44,7 @@
       color: var(--aura-light);
       font-weight: 700;
       text-align: center;
+      margin-top: 0;
     }
 
     aside nav a {
@@ -75,10 +77,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 20px var(--aura-dark);
+      margin-top: 0;
     }
 
     pre {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.05) !important;
       border-radius: 8px;
       padding: 1rem;
       overflow-x: auto;
@@ -99,6 +102,7 @@
       color: white;
       font-size: 1.5rem;
       transition: transform 0.2s ease;
+      z-index: 1000;
     }
 
     #voice-btn.listening {
@@ -127,22 +131,18 @@
       font-size: 0.9rem;
     }
   </style>
-
-
 </head>
 <body>
 
-
   <aside>
     <h2>Aura</h2>
-    <nav>
-      <a onclick="loadSection('intro', event)" class="active">Introduction</a>
-      <a onclick="loadSection('voice', event)">Voice Integration</a>
-      <a onclick="loadSection('api', event)">API Reference</a>
-      <a onclick="loadSection('examples', event)">Examples</a>
+    <nav id="sidebar-nav">
+      <a data-section="intro" onclick="loadSection('intro', event)" class="active">Introduction</a>
+      <a data-section="voice" onclick="loadSection('voice', event)">Voice Integration</a>
+      <a data-section="api" onclick="loadSection('api', event)">API Reference</a>
+      <a data-section="examples" onclick="loadSection('examples', event)">Examples</a>
     </nav>
   </aside>
-
 
   <main id="content">
     <h1 class="aura-title">Aura Documentation</h1>
@@ -151,8 +151,7 @@
 console.log("Hello Aura");</code></pre>
   </main>
 
-
-<button id="voice-btn" title="Activate Voice Assistant">🎤</button>
+  <button id="voice-btn" title="Activate Voice Assistant">🎤</button>
 
   <script>
     const content = document.getElementById("content");
@@ -161,85 +160,116 @@ console.log("Hello Aura");</code></pre>
       intro: `
         <h1 class="aura-title">Introduction</h1>
         <p>Aura is a <b>Voice Reactive Intelligence Engine</b> that combines speech recognition, context memory, and real-time code generation.</p>
+        <pre><code class="language-js">// Initialize Aura Engine
+const aura = new Aura({ glow: 0.5 });
+aura.start();</code></pre>
       `,
       voice: `
         <h1 class="aura-title">Voice Integration</h1>
-        <p>To enable voice interactivity, Aura++ uses the <code>SpeechRecognition</code> API and Web Speech Synthesis.</p>
+        <p>To enable voice interactivity, Aura uses the <code>SpeechRecognition</code> API and Web Speech Synthesis.</p>
         <pre><code class="language-js">const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.start();</code></pre>
-
-
-  `,
-  api: `
-    <h1 class="aura-title">API Reference</h1>
-    <p>Aura++ exposes a modular API for voice, emotion, and action layers.</p>
-    <pre><code class="language-js">fetch("/api/v1/voice", { method: "POST", body: audioBlob });</code></pre>
-  `,
-  examples: `
-    <h1 class="aura-title">Examples</h1>
-    <p>Here’s how you can trigger a reactive event:</p>
-    <pre><code class="language-js">aura.on("command", (cmd) => {
-
-if (cmd.includes("hello")) aura.say("Hey there, human!"); 
+      `,
+      api: `
+        <h1 class="aura-title">API Reference</h1>
+        <p>Aura exposes a modular API for voice, emotion, and action layers.</p>
+        <pre><code class="language-js">fetch("/api/v1/voice", { 
+  method: "POST", 
+  body: audioBlob 
+});</code></pre>
+      `,
+      examples: `
+        <h1 class="aura-title">Examples</h1>
+        <p>Here’s how you can trigger a reactive event:</p>
+        <pre><code class="language-js">aura.on("command", (cmd) => {
+  if (cmd.includes("hello")) aura.say("Hey there, human!"); 
 });</code></pre> 
-` 
-};
+      ` 
+    };
 
-function loadSection(sectionKey, evt) {
-  content.innerHTML = sections[sectionKey] || "<p>Not found</p>";
-  Prism.highlightAll();
-  
-  document.querySelectorAll("aside nav a").forEach(a => a.classList.remove("active"));
-  if (evt && evt.target) {
-    evt.target.classList.add("active");
-  }
-}
+    function loadSection(sectionKey, evt) {
+      if (!sections[sectionKey]) return;
 
-// Voice assistant setup
-const btn = document.getElementById("voice-btn");
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-if (SpeechRecognition) {
-  const synth = window.speechSynthesis;
-  const rec = new SpeechRecognition();
-  rec.continuous = false;
-  rec.lang = "en-US";
-
-  rec.onresult = (e) => {
-    const transcript = e.results[0][0].transcript.toLowerCase();
-    speak("You said: " + transcript);
-    if (transcript.includes("voice")) loadSection("voice");
-    else if (transcript.includes("api")) loadSection("api");
-    else if (transcript.includes("example")) loadSection("examples");
-    else if (transcript.includes("intro")) loadSection("intro");
-    else speak("Try saying: show me voice integration.");
-  };
-
-  rec.onend = () => btn.classList.remove("listening");
-
-  function speak(text) {
-    synth.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.pitch = 1;
-    utter.rate = 1.1;
-    
-    // Wait for voices to load if needed
-    const voices = synth.getVoices();
-    if (voices.length > 0) {
-      utter.voice = voices[0];
+      content.innerHTML = sections[sectionKey];
+      Prism.highlightAll();
+      
+      // Update sidebar nav active state
+      document.querySelectorAll("#sidebar-nav a").forEach(a => a.classList.remove("active"));
+      
+      if (evt && evt.target) {
+        evt.target.classList.add("active");
+      } else {
+        const targetLink = document.querySelector(`#sidebar-nav a[data-section="${sectionKey}"]`);
+        if (targetLink) targetLink.classList.add("active");
+      }
     }
-    synth.speak(utter);
-  }
 
-  btn.onclick = () => {
-    btn.classList.add("listening");
-    rec.start();
-    speak("Listening...");
-  };
-} else {
-  btn.onclick = () => alert("Web Speech API is not supported in this browser.");
-}
+    // Prism initial highlight on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      Prism.highlightAll();
+    });
 
+    // Voice assistant setup
+    const btn = document.getElementById("voice-btn");
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      const synth = window.speechSynthesis;
+      const rec = new SpeechRecognition();
+      rec.continuous = false;
+      rec.lang = "en-US";
+
+      let availableVoices = [];
+      const updateVoices = () => {
+        availableVoices = synth.getVoices();
+      };
+      updateVoices();
+      if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = updateVoices;
+      }
+
+      rec.onresult = (e) => {
+        const transcript = e.results[0][0].transcript.toLowerCase();
+        
+        if (transcript.includes("voice")) {
+          speak("Showing voice integration.");
+          loadSection("voice");
+        } else if (transcript.includes("api")) {
+          speak("Showing API reference.");
+          loadSection("api");
+        } else if (transcript.includes("example")) {
+          speak("Showing examples.");
+          loadSection("examples");
+        } else if (transcript.includes("intro") || transcript.includes("introduction")) {
+          speak("Showing introduction.");
+          loadSection("intro");
+        } else {
+          speak("You said: " + transcript + ". Try saying voice integration, API, or examples.");
+        }
+      };
+
+      rec.onend = () => btn.classList.remove("listening");
+      rec.onerror = () => btn.classList.remove("listening");
+
+      function speak(text) {
+        synth.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.pitch = 1;
+        utter.rate = 1.1;
+        
+        if (availableVoices.length > 0) {
+          utter.voice = availableVoices[0];
+        }
+        synth.speak(utter);
+      }
+
+      btn.onclick = () => {
+        btn.classList.add("listening");
+        rec.start();
+      };
+    } else {
+      btn.onclick = () => alert("Web Speech API is not supported in this browser.");
+    }
   </script>
 </body>
 </html>
