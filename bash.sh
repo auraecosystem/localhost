@@ -1,3 +1,7 @@
+bun install --frozen-lockfile
+bun run typecheck
+bun test
+bun run build
 npm install --save-dev @workos/emulate
 
 # or run without installing
