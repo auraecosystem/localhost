@@ -80,7 +80,7 @@ class F,G ai;
 ```
 
 # Chrome, Edge, Brave
-[EDGI](chromium//newpage/):
+[EDGI](src/chromium//t/b/r/mosules/web_install/newpage/):
 
 start typing localhost in the address bar, use the arrow keys to highlight the `localhost8000.com` suggestion, then press Shift + Delete (on Mac: Shift + Fn + Delete).
 
