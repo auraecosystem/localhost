@@ -1,1 +1,30 @@
+Model Tier,Core Function,Best Used For
+G2,"High-speed, lightweight processing","Immediate voice command parsing, basic conversational routing, and low-latency local executions."
+"G4 (e.g., GPT-4o)",Advanced cognitive reasoning,"Complex problem-solving, dynamic contextual responses, and heavy-lifting intelligence tasks."
 
+Here is a structured documentation draft for the **Aura** voice-reactive intelligence engine, detailing the integration of the UI framework, scripting logic, and AI model tiers.
+
+## Aura Architecture & Integration Documentation
+
+### 1. Desktop Interface Layer (WPF)
+
+Windows Presentation Foundation (WPF) serves as the primary front-end architecture for the Aura desktop client.
+
+* **Purpose:** Delivers a rich, responsive visual interface that seamlessly pairs with Aura's voice-reactive capabilities.
+* **Key Responsibilities:** Capturing microphone input, rendering real-time voice visualizations, and managing the desktop client environment.
+
+### 2. Logic & Execution Layer (SB)
+
+The `.sb` (Small Basic / Scratch) implementation provides an accessible scripting and automation environment.
+
+* **Purpose:** Allows for modular, block-style, or simplified scripting of automated tasks and logic within the engine.
+* **Key Responsibilities:** Defining custom behavioral triggers, linking voice commands to specific system actions, and offering a lightweight sandbox for custom routines without requiring core engine compilation.
+
+### 3. Intelligence Engine (G2 & G4)
+
+Aura routes cognitive tasks through a tiered AI model architecture to balance processing speed with reasoning depth.
+
+| Model Tier | Core Function | Best Used For |
+| --- | --- | --- |
+| **G2** | High-speed, lightweight processing | Immediate voice command parsing, basic conversational routing, and low-latency local executions. |
+| **G4 (e.g., GPT-4o)** | Advanced cognitive reasoning | Complex problem-solving, dynamic contextual responses, and heavy-lifting intelligence tasks. |
