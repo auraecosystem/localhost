@@ -152,7 +152,8 @@ A Records (for root domain without www):
 3. Enter your custom domain (example.cf or example.info).
 4. Enable Enforce HTTPS once DNS propagates.
 ``
-
+[localhost]
+(github.com/auraecosystem/localhost/main/index.html)
 ---
 
 ✅ This file gives you both the visual workflow and the practical DNS instructions in one place.
