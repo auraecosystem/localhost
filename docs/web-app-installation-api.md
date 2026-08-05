@@ -47,7 +47,7 @@ Since the API is experimental across Chromium browsers (Chrome/Edge):
 
 ## 2. Browser Engine Developers: Building the Blink Module
 
-If you are modifying the Chromium C++ codebase directly (`third_party/blink/renderer/modules/web_install/`):
+If you are modifying the [Chromium C++ codebase directly ](`third_party/blink/renderer/modules/web_install/`):
 
 ### Build Configuration (`args.gn`)
 
@@ -63,6 +63,6 @@ enable_web_app_installation = true
 
 When `navigator.install()` is called in JavaScript:
 
-1. **Blink Renderer (`modules/web_install/`)**: `navigator_web_install.cc` validates the request (e.g., checks if triggered by a user gesture).
-2. **Mojo IPC (`web_install.mojom`)**: The request is passed from Blink to the browser process via a Mojo interface.
-3. **Browser Process (`//chrome/browser/web_applications/`)**: `web_install_service_impl.cc` fetches the app manifest, checks permissions, and presents the native installation dialog to the user.
+1. [**Blink Renderer ](`modules/web_install/`)**: `navigator_web_install.cc` validates the request (e.g., checks if triggered by a user gesture).
+2.[ **Mojo IPC ](`web_install.mojom`)**: The request is passed from Blink to the browser process via a Mojo interface.
+3.[ **Browser Process ](`//chrome/browser/web_applications/`)**: `web_install_service_impl.cc` fetches the app manifest, checks permissions, and presents the native installation dialog to the user.
