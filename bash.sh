@@ -1,3 +1,7 @@
+npm install --save-dev @workos/emulate
+
+# or run without installing
+npx @workos/emulate
 LocalSettings.php:
 $wgDnsBlacklistUrls = array(
         'all.s5h.net.',
