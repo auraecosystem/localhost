@@ -1,0 +1,2 @@
+# Enable experimental Web Platform features in your build
+enable_web_app_installation = true
