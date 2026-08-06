@@ -88,7 +88,7 @@ Firefox: same idea - highlight the suggestion with the arrow keys, then press Sh
 Safari: Safari has no per-suggestion shortcut. Go to Safari → Settings → 
 Privacy → Manage Website Data, search for localhost8000, and remove it. You may also want to clear it from history (History → Clear History, scoped to the last hour).>
   Here’s a combined file you can drop straight into your repo (workflow.md). It includes both the Mermaid diagram and the DNS record setup for .cf and .info domains, so you have everything in one place:
-  
+  [browser](chrome.net) 
 ———
 #Here’s a combined file you can drop straight into your repo (workflow.md). It includes both the Mermaid diagram and the DNS record setup for .cf and .info domains, so you have everything in one place:
 
