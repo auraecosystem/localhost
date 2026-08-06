@@ -4,7 +4,15 @@ type nul > my_agent\env.bat
 mkdir -p my_agent/ && \
     touch my_agent/agent.go && \
     touch my_agent/.env
+git clone https://github.com/localgpt-app/localgpt.git
+cd localgpt
 
+# World Building
+cargo run -p localgpt-gen -- "Create a desert scene with pyramids"
+
+# AI Assistant
+cargo run -- chat
+cargo run -- daemon start
 bun install --frozen-lockfile
 bun run typecheck
 bun test
