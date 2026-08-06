@@ -143,6 +143,19 @@ A Records (for root domain without www):
 • 185.199.111.153
 ```
 
+```bash
+/etc/apache2/
+|-- apache2.conf
+|       `--  ports.conf
+|-- mods-enabled
+|       |-- *.load
+|       `-- *.conf
+|-- conf-enabled
+|       `-- *.conf
+|-- sites-enabled
+|       `-- *.conf
+ ```         
+
 ⚙️ GitHub Pages Setup
 
 1. Go to Settings → Pages in your repo.
