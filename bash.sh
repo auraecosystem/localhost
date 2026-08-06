@@ -1,3 +1,10 @@
+mkdir my_agent\
+type nul > my_agent\agent.go
+type nul > my_agent\env.bat
+mkdir -p my_agent/ && \
+    touch my_agent/agent.go && \
+    touch my_agent/.env
+
 bun install --frozen-lockfile
 bun run typecheck
 bun test
