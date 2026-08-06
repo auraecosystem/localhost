@@ -1,0 +1,11 @@
+[agent]
+default_model = "claude-cli/opus"
+
+[providers.anthropic]
+api_key = "${ANTHROPIC_API_KEY}"
+[agent]
+default_model = "openai/qwen/qwen3.5-35b-a3b"
+
+[providers.qubuhub]
+api_key = "lm-studio"
+base_url = "http://127.0.0.1:8000/v1"
