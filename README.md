@@ -47,7 +47,7 @@ Option B: Node-based development server (if applicable)
 npm run dev
 ```
 Option C: Framework-specific servers
-```
+```vali.ini
 Angular:   ng serve
 Vite:      npm run dev
 Next.js:   npm run dev
@@ -61,7 +61,7 @@ ASP.NET:   dotnet run
 localhost is a multi-purpose development workspace containing source code, documentation, experiments, templates, infrastructure configuration, tests, and development tooling.
 
 The repository brings together multiple layers of the development environment into one navigable workspace:
-```
+```bash
 localhost
 │
 ├── source code
@@ -107,7 +107,7 @@ flowchart TD
 ```
 # Main Areas
 
-```Md
+```console
 Directory	Purpose
 .github/	GitHub Actions and repository automation
 .vale/	Vale documentation linting and styles
