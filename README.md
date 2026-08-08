@@ -1,15 +1,251 @@
-# host
+# localhost
 
+A local development, documentation, automation, and experimentation workspace for the Aura Ecosystem.
+
+Quick Start
+
+Follow these steps to get the project running locally:
+
+1. Clone the repository
+
+git clone https://github.com/auraecosystem/localhost.git
+cd localhost
+
+2. Install dependencies
+
+Depending on the parts of the project you are working with:
 ```bash
-# you wanted:
-$ open https://localhost:8000
-# you got:
-$ open https://localhost8000.com
-localhost:8000
+Node.js (frontend / tooling)
+
+npm install
+
+or
+
+yarn install
+
+Python (scripts / tooling)
+
+python3 -m venv .venv
+source .venv/bin/activate   # macOS / Linux
+# .venv\Scripts\activate    # Windows
+pip install -r requirements.txt
+```
+If a specific subproject has its own dependencies, install them from within that directory.
+
+3. Run a local development server
+
+Option A: Simple static server
+```
+python3 -m http.server 8000
+
+Then open:
+
+http://localhost:8000
+```
+Option B: Node-based development server (if applicable)
+```bash
+npm run dev
+```
+Option C: Framework-specific servers
+```
+Angular:   ng serve
+Vite:      npm run dev
+Next.js:   npm run dev
+Flask:     flask run
+ASP.NET:   dotnet run
+```
+⸻
+
+# Overview
+
+localhost is a multi-purpose development workspace containing source code, documentation, experiments, templates, infrastructure configuration, tests, and development tooling.
+
+The repository brings together multiple layers of the development environment into one navigable workspace:
+```
+localhost
+│
+├── source code
+├── documentation
+├── tooling
+├── templates
+├── tests
+├── infrastructure
+├── web assets
+├── parsers
+├── experiments
+└── automation
+```
+Repository Architecture
+```mermaid
+flowchart TD
+    ROOT["localhost"]
+    ROOT --> SRC["Source"]
+    ROOT --> DOCS["Documentation"]
+    ROOT --> TOOLS["Tooling"]
+    ROOT --> TESTS["Tests"]
+    ROOT --> WEB["Web / Public"]
+    ROOT --> INFRA["Infrastructure"]
+    ROOT --> EXP["Experiments"]
+    SRC --> SRC1["src"]
+    SRC --> SRC2["source-code"]
+    SRC --> SRC3["modules"]
+    DOCS --> DOC1["docs"]
+    DOCS --> DOC2["README / Markdown"]
+    DOCS --> DOC3["Vale"]
+    TOOLS --> T1[".github/workflows"]
+    TOOLS --> T2[".vale"]
+    TOOLS --> T3["templates"]
+    TESTS --> TEST1["tests"]
+    WEB --> WEB1["public"]
+    WEB --> WEB2["sites-enabled"]
+    INFRA --> I1["etc"]
+    INFRA --> I2["var"]
+    INFRA --> I3["configuration"]
+    EXP --> E1["AI / Agents"]
+    EXP --> E2["Parser / LALR"]
+    EXP --> E3["Experiments"]
+```
+# Main Areas
+
+```Md
+Directory	Purpose
+.github/	GitHub Actions and repository automation
+.vale/	Vale documentation linting and styles
+docs/	Project documentation and technical material
+src/	Primary source code
+source-code/	Additional source and implementation material
+modules/	Modular components
+tests/	Test suites
+templates/	Reusable templates
+public/	Public web assets
+ASP.NET/	ASP.NET material
+VB.net/	Visual Basic .NET material
+Parser/LALR/	Parser and language-processing work
+assets/	Assets and model-related resources
+.github/workflows/	CI/CD automation
+```
+# Localhost
+
+localhost refers to the local machine.
+
+For a simple Python development server:
+```bash
 python3 -m http.server 8000
 ```
-  [You probably meant to go to ](localhost:8000), and ended up here by accident.
+Then open:
+```vapi
+http://localhost:8000
+```
+Common development ports include:
+```bash
+3000   Node.js / Next.js
+4200   Angular
+5000   Flask / ASP.NET Core
+5173   Vite
+5432   PostgreSQL
+6379   Redis
+8000   Python / Django
+8080   General HTTP services
+8888   Jupyter
+```
+The exact port depends on the application being executed.
 
+Documentation
+
+Markdown documentation can be rendered dynamically by the repository’s web layer.
+
+Example:
+```bash
+const BASE =
+    "https://raw.githubusercontent.com/auraecosystem/localhost/main";
+loadMarkdown(`${BASE}/README.md`, "readme");
+loadMarkdown(`${BASE}/docs/mmd.md`, "mmd");
+```
+A production renderer should sanitize generated HTML before inserting it into the DOM.
+
+Mermaid
+
+Architecture and workflow diagrams can be represented using Mermaid:
+```mermaid
+flowchart LR
+    GitHub["GitHub Repository"]
+    CI["CI / Validation"]
+    Docs["Documentation"]
+    Deploy["Deployment"]
+    Runtime["Runtime"]
+    GitHub --> CI
+    CI --> Docs
+    CI --> Deploy
+    Deploy --> Runtime
+```
+Documentation Quality
+
+Vale is used to validate documentation quality.
+```md
+Markdown
+   │
+   ▼
+  Vale
+   │
+   ├── style checks
+   ├── terminology
+   ├── readability
+   └── consistency
+          │
+          ▼
+    GitHub Actions
+          │
+          ├── error
+          ├── warning
+          └── notice
+```
+Vale configuration lives under:
+```console
+.vale/
+.vale.ini
+```
+Development Workflow
+```mermaid
+flowchart TD
+    A["Edit"] --> B["Validate"]
+    B --> C["Test"]
+    C --> D["Build"]
+    D --> E["Document"]
+    E --> F["Commit"]
+    F --> G["CI"]
+    G --> H["Deploy"]
+```
+The intended workflow is:
+```bash
+git status
+# make changes
+git diff
+# run project-specific tests / validation
+git add .
+git commit -m "Update project"
+git push origin main
+```
+# Design Principle
+
+The repository is organized around a simple idea:
+```txt
+Code, documentation, infrastructure, experiments, and automation should remain discoverable from the same development workspace.
+```
+The repository therefore acts as a local development laboratory as well as a source-control workspace.
+
+Status
+
+This repository is actively evolving. Directory structure, experiments, tooling, and documentation may change as the ecosystem develops.
+
+License
+
+See the repository’s license and individual project directories for applicable licensing information.
+
+⸻
+
+Aura Ecosystem
+
+localhost • development • documentation • automation • experimentation
 → In computer networking, localhost is a hostname that refers back to the same computer. The number following the colon is a port number. The port 8000 is a long-standing default in the Python web ecosystem: it's what Django uses for runserver, what Python's built-in python -m http.serverbinds to, and the default for FastAPI examples served via Uvicorn.
 
 It also shows up as the default for several modern AI / LLM serving tools, including vLLM's OpenAI-compatible server and LangServe, [so a lot of AI coding tutorials send people to ](localhost:8000) too.
