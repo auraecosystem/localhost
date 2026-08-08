@@ -1,0 +1,46 @@
+{%- comment -%}
+  Vale → GitHub Actions annotations
+
+  Converts Vale alerts into:
+    ::error
+    ::warning
+    ::notice
+{%- endcomment -%}
+
+{%- for file in Files -%}
+  {%- assign filepath = file.Path -%}
+
+  {%- for alert in file.Alerts -%}
+    {%- assign line = alert.Line -%}
+    {%- assign check = alert.Check -%}
+    {%- assign severity = alert.Severity -%}
+    {%- assign message = alert.Message -%}
+
+    {%- assign column = 1 -%}
+
+    {%- if alert.Span.size > 0 -%}
+      {%- assign column = alert.Span[0] -%}
+    {%- endif -%}
+
+    {%- assign ignored_readability = false -%}
+
+    {%- if check contains "Readability" -%}
+      {%- assign ignored_readability = true -%}
+    {%- endif -%}
+
+    {%- unless ignored_readability -%}
+      {%- unless line == 1 and column == 1 -%}
+
+        {%- if severity == "error" -%}
+::error file={{ filepath }},line={{ line }},col={{ column }},title={{ check | escape }}::{{ message | escape }}
+        {%- elsif severity == "warning" -%}
+::warning file={{ filepath }},line={{ line }},col={{ column }},title={{ check | escape }}::{{ message | escape }}
+        {%- else -%}
+::notice file={{ filepath }},line={{ line }},col={{ column }},title={{ check | escape }}::{{ message | escape }}
+        {%- endif -%}
+
+      {%- endunless -%}
+    {%- endunless -%}
+
+  {%- endfor -%}
+{%- endfor -%}
