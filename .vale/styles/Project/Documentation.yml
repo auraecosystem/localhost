@@ -1,0 +1,14 @@
+extends: existence
+
+message: "Use clear, direct technical language."
+
+level: warning
+
+scope: text
+
+tokens:
+  - '\bvery\b'
+  - '\breally\b'
+  - '\bjust\b'
+  - '\bobviously\b'
+  - '\bsimply\b'
