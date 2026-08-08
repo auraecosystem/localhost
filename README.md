@@ -7,10 +7,10 @@ Quick Start
 Follow these steps to get the project running locally:
 
 1. Clone the repository
-
+```
 git clone https://github.com/auraecosystem/localhost.git
 cd localhost
-
+```
 2. Install dependencies
 
 Depending on the parts of the project you are working with:
