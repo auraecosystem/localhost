@@ -1,4 +1,171 @@
-# localhost
+---
+title: localhost Documentation Portal
+description: Official documentation for the Web4 Ecosystem
+version: 1.0.0
+author: seriki yakub
+theme: web4
+toc: true
+search: true
+syntax: wikixedia
+license: Apache-2.0
+---
+
+
+# Welcome
+
+Welcome to the official **Web4 Documentation Portal**.
+
+This portal contains specifications, developer guides, API references, architecture documentation, and ecosystem projects.
+
+---
+
+# Ecosystem Projects
+
+- [[Web4]]
+- [[QubuHub]]
+- [[Aura Ecosystem]]
+- [[Fadaka Blockchain]]
+- [[GPT-5 Mini]]
+- [[RODAAI]]
+
+---
+
+# Documentation
+
+- [[Getting Started]]
+- [[Installation]]
+- [[Architecture]]
+- [[API Reference]]
+- [[Tutorials]]
+- [[Examples]]
+- [[CLI Reference]]
+- [[SDK]]
+- [[Security]]
+- [[Deployment]]
+
+---
+
+!!! note
+
+    This documentation is automatically indexed by **Wikixedia Search**
+    and can be exported to HTML, PDF, Markdown, EPUB, JSON, XML,
+    OpenAPI, and Static Site formats.
+
+---
+
+# Quick Example
+
+```python
+print("Hello, Web4!")
+```
+
+---
+
+# Documentation Flow
+
+:::mermaid
+
+graph TD
+
+User --> Wikixedia
+
+Wikixedia --> Lexer
+
+Lexer --> Parser
+
+Parser --> AST
+
+AST --> HTML
+
+AST --> Markdown
+
+AST --> PDF
+
+AST --> JSON
+
+AST --> XML
+
+AST --> API
+
+:::
+
+---
+
+# Internal Architecture
+
+```text
+                    index.nf
+                        │
+         ┌──────────────▼──────────────┐
+         │         NF Lexer             │
+         └──────────────┬──────────────┘
+                        │
+         ┌──────────────▼──────────────┐
+         │        NF Parser             │
+         └──────────────┬──────────────┘
+                        │
+         ┌──────────────▼──────────────┐
+         │      Abstract Syntax Tree    │
+         │             (AST)            │
+         └──────────────┬──────────────┘
+                        │
+      ┌─────────────────┼──────────────────┐
+      ▼                 ▼                  ▼
+   HTML             Markdown             PDF
+      ▼                 ▼                  ▼
+ Static Site       GitHub Docs        Printable Docs
+                        │
+                        ▼
+                  Search Index
+                        │
+                        ▼
+                   Wikixedia API
+```
+
+---
+
+# Features
+
+- Full-text Search
+- Automatic Table of Contents
+- Cross-page Linking
+- Mermaid Diagrams
+- Syntax Highlighting
+- PDF Generation
+- Static Site Export
+- REST API Export
+- OpenAPI Generation
+- JSON/XML Export
+- Plugin System
+- Extension Support
+- Themes
+- Versioned Documentation
+- Multi-language Documentation
+
+---
+
+# Supported Formats
+
+| Format | Status |
+|---------|--------|
+| HTML | ✅ |
+| Markdown | ✅ |
+| PDF | ✅ |
+| EPUB | ✅ |
+| JSON | ✅ |
+| XML | ✅ |
+| OpenAPI | ✅ |
+| Static Website | ✅ |
+
+---
+
+# Navigation
+
+← [[Home]]
+
+↑ [[Documentation]]
+
+→ [[Getting Started]]
 
 A local development, documentation, automation, and experimentation workspace for the Aura Ecosystem.
 
