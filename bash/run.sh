@@ -8,3 +8,14 @@ curl https://api.openai.com/v1/responses \
     "version": "1"
   }
 }'
+me@my-computer:/home$ docker run --rm -it kaggle/rstats
+R version 3.3.1 (2016-06-21) -- "Bug in Your Hair"
+[...etc...]
+> library(devtools)
+> install_github("nerdcha/coolstuff")
+Downloading GitHub repo nerdcha/coolstuff@master
+[...etc...]
+** testing if installed package can be loaded
+* DONE (coolstuff)
+> library(coolstuff)
+>
