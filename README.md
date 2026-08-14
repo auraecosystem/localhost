@@ -1,9 +1,9 @@
 ---
 title: localhost Documentation Portal
 description: Official documentation for the Web4 Ecosystem
-version: 1.0.0
-author: seriki yakub
-theme: web4
+version: 4.0
+author: #  [seriki Walter Yakub](https://gravatar.com/qubuhubincs?utm_source=email_signature)
+theme: web4.css
 toc: true
 search: true
 syntax: wikixedia
@@ -676,3 +676,4 @@ The server is listening on the wrong interface. If it's bound to 0.0.0.0 it's re
 </a> </div> <div style="background: linear-gradient(138deg, rgba(15, 44, 133, 1) 0%, rgba(142, 48, 112) 55%, rgba(71, 34, 44, 1) 100%); height: 4px; line-height: 4px;" > &nbsp; </div>
 </div>
 
+[seriki Walter Yakub](https://gravatar.com/qubuhubincs?utm_source=email_signature)
