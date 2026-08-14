@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # Configuration
-FEED_URL = "https://your-blog-feed-url.com/feed"  # Replace with your actual feed URL
+FEED_URL = "https://blog.github.com/feed"  # Replace with your actual feed URL
 README_PATH = "profile/README.md"
 MAX_POSTS = 5
 
