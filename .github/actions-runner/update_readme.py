@@ -4,9 +4,9 @@ import os
 from datetime import datetime
 
 # Configuration
-FEED_URL = "https://blog.example.com/feed"  # Replace with your actual feed URL
+FEED_URL = "https://qubuhubtech.blogspot.com/feed"  # Replace with your actual feed URL
 README_PATH = "profile/README.md"
-MAX_POSTS = 5
+MAX_POSTS = 10
 
 def fetch_recent_posts(feed_url, max_posts=5):
     """Fetch recent blog posts from RSS/Atom feed"""
