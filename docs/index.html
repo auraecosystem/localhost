@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Documentation (Installable)</title>
+  
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Prism Syntax Highlighting -->
+  <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism-tomorrow.css" />
+  <script src="https://unpkg.com/prismjs/prism.js"></script>
+
+  <style>
+    :root {
+      --aura-glow: 0.5;
+      --aura-light: hsl(190, 100%, 65%);
+      --aura-dark: hsl(270, 100%, 70%);
+      --bg: #0d0d0d;
+      --fg: #ffffff;
+      --aura-gradient: linear-gradient(90deg, var(--aura-light), var(--aura-dark));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    aside {
+      width: 260px;
+      background: rgba(20, 20, 20, 0.95);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem 1rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    aside h2 {
+      color: var(--aura-light);
+      font-weight: 700;
+      text-align: center;
+      margin-top: 0;
+      cursor: pointer;
+    }
+
+    aside nav {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+      margin: 1.2rem 0 0.4rem 0.5rem;
+      font-weight: bold;
+    }
+
+    aside nav a {
+      display: block;
+      padding: 0.7rem 1rem;
+      color: #aaa;
+      text-decoration: none;
+      border-radius: 8px;
+      margin: 0.3rem 0;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+
+    aside nav a:hover,
+    aside nav a.active {
+      background: var(--aura-gradient);
+      color: white;
+    }
+
+    aside nav a.external-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #888;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    aside nav a.external-link:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .aura-title {
+      font-size: 2.2rem;
+      background: var(--aura-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px var(--aura-dark);
+      margin-top: 0;
+    }
+
+    pre {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+
+    /* Floating UI Elements */
+    .floating-ui {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 1000;
+    }
+
+    /* Shared style for floating buttons */
+    .aura-btn {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--aura-light), var(--aura-dark));
+      box-shadow: 0 0 20px var(--aura-dark);
+      cursor: pointer;
+      color: white;
+      font-size: 1.5rem;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .aura-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--aura-light);
+    }
+
+    #voice-btn.listening {
+      animation: pulse 1.2s infinite;
+    }
+
+    #install-btn {
+      background: #1a1a1a;
+      font-size: 1.3rem;
+      font-weight: bold;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: none;
+    }
+
+    #install-btn.ready {
+      display: flex;
+      animation: glowInstall 2s infinite;
+    }
+
+    @keyframes glowInstall {
+      0% { box-shadow: 0 0 5px rgba(255,255,255,0.1); }
+      50% { box-shadow: 0 0 15px var(--aura-dark); }
+      100% { box-shadow: 0 0 5px rgba(255,255,255,0.1); }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px var(--aura-light);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px var(--aura-dark);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px var(--aura-light);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h2 onclick="loadSection('intro')">Aura</h2>
+    <nav id="sidebar-nav">
+      <div class="nav-label">Documentation</div>
+      <a data-section="intro" onclick="loadSection('intro', event)" class="active">Introduction</a>
+      <a data-section="voice" onclick="loadSection('voice', event)">Voice Integration</a>
+      <a data-section="install" onclick="loadSection('install', event)">Blink Install API</a>
+      <a data-section="api" onclick="loadSection('api', event)">API Reference</a>
+
+      <!-- Added requested URLs -->
+      <div class="nav-label">Quick Links</div>
+      <a href="chrome://newtab" target="_blank" class="external-link">New Tab ↗</a>
+      <a href="https://gemini.google.com" target="_blank" rel="noopener" class="external-link">Gemini AI ↗</a>
+      <a href="https://www.slideshare.net/" target="_blank" rel="noopener" class="external-link">SlideShare ↗</a>
+    </nav>
+  </aside>
+
+  <main id="content">
+    <h1 class="aura-title">Aura Documentation</h1>
+    <p>Welcome to <strong>Aura</strong> — the next evolution of voice-reactive intelligence. Speak, and the docs respond.</p>
+    <pre><code class="language-js">// Try saying "Show me voice integration" or "Open Gemini"
+console.log("Hello Aura");</code></pre>
+  </main>
+
+  <div class="floating-ui">
+    <button id="install-btn" class="aura-btn" title="Install Aura PWA">Get</button>
+    <button id="voice-btn" class="aura-btn" title="Activate Voice Assistant">🎤</button>
+  </div>
+
+  <script>
+    const content = document.getElementById("content");
+    const installBtn = document.getElementById("install-btn");
+    const voiceBtn = document.getElementById("voice-btn");
+    
+    const installApiAvailable = ('install' in navigator);
+
+    const sections = {
+      intro: `
+        <h1 class="aura-title">Introduction</h1>
+        <p>Aura is a <b>Voice Reactive Intelligence Engine</b> that combines speech recognition, context memory, and real-time code generation.</p>
+        <pre><code class="language-js">// Initialize Aura Engine
+const aura = new Aura({ glow: 0.5 });
+aura.start();</code></pre>
+      `,
+      voice: `
+        <h1 class="aura-title">Voice Integration</h1>
+        <p>To enable voice interactivity, Aura uses the <code>SpeechRecognition</code> API and Web Speech Synthesis.</p>
+        <pre><code class="language-js">const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.start();</code></pre>
+      `,
+      install: `
+        <h1 class="aura-title">Blink Install API</h1>
+        <p>Aura demonstrates the experimental <b>Blink Web Install API</b> (` + "`navigator.install()`" + `), allowing programmatic installation of the PWA.</p>
+        <pre><code class="language-js">// Core installation logic
+async function triggerInstallation() {
+  if ('install' in navigator) {
+    try {
+      await navigator.install();
+      console.log("PWA Installed successfully!");
+    } catch (err) {
+      console.error("Installation failed:", err.message);
+    }
+  }
+}</code></pre>
+        <p><b>Required Flag:</b> <code>chrome://flags/#web-app-installation-api</code></p>
+      `,
+      api: `
+        <h1 class="aura-title">API Reference</h1>
+        <p>Aura exposes a modular API for voice, emotion, and action layers.</p>
+        <pre><code class="language-js">fetch("/api/v1/voice", { 
+  method: "POST", 
+  body: audioBlob 
+});</code></pre>
+      `
+    };
+
+    function loadSection(sectionKey, evt) {
+      if (!sections[sectionKey]) return;
+
+      content.innerHTML = sections[sectionKey];
+      Prism.highlightAll();
+      
+      document.querySelectorAll("#sidebar-nav a:not(.external-link)").forEach(a => a.classList.remove("active"));
+      
+      if (evt && evt.target) {
+        evt.target.classList.add("active");
+      } else {
+        const targetLink = document.querySelector(`#sidebar-nav a[data-section="${sectionKey}"]`);
+        if (targetLink) targetLink.classList.add("active");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      Prism.highlightAll();
+    });
+
+    // --- Web Install API Logic ---
+    async function triggerInstall(source='button') {
+      if (!installApiAvailable) {
+        speak("I'm sorry, the required installation flag is not enabled in your browser.");
+        alert("Blink Install API not available. Enable: chrome://flags/#web-app-installation-api");
+        return;
+      }
+
+      try {
+        if (source === 'voice') speak("Okay, initiating installation prompt.");
+        await navigator.install();
+        speak("Aura has been successfully installed.");
+        installBtn.classList.remove("ready");
+      } catch (err) {
+        if (err.name === 'NotAllowedError') {
+          speak("Installation was cancelled.");
+        }
+      }
+    }
+
+    if (installApiAvailable) {
+      installBtn.classList.add("ready");
+      installBtn.addEventListener("click", () => triggerInstall('button'));
+    }
+
+    // --- Voice Assistant Setup ---
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      const synth = window.speechSynthesis;
+      const rec = new SpeechRecognition();
+      rec.continuous = false;
+      rec.lang = "en-US";
+
+      let availableVoices = [];
+      const updateVoices = () => {
+        availableVoices = synth.getVoices();
+      };
+      updateVoices();
+      if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = updateVoices;
+      }
+
+      rec.onresult = (e) => {
+        const transcript = e.results[0][0].transcript.toLowerCase();
+        
+        // Navigation Commands
+        if (transcript.includes("voice")) {
+          speak("Showing voice integration.");
+          loadSection("voice");
+        } else if (transcript.includes("api")) {
+          speak("Showing API reference.");
+          loadSection("api");
+        } else if (transcript.includes("install blink") || transcript.includes("install api")) {
+          speak("Showing installation documentation.");
+          loadSection("install");
+        } else if (transcript.includes("intro")) {
+          speak("Showing introduction.");
+          loadSection("intro");
+        
+        // External Link Voice Shortcuts
+        } else if (transcript.includes("gemini")) {
+          speak("Opening Gemini.");
+          window.open("https://gemini.google.com", "_blank");
+        } else if (transcript.includes("slideshare")) {
+          speak("Opening SlideShare.");
+          window.open("https://www.slideshare.net/", "_blank");
+        } else if (transcript.includes("new tab")) {
+          speak("Opening new tab.");
+          window.open("chrome://newtab", "_blank");
+
+        // Install Command
+        } else if (transcript.includes("install aura") || transcript.includes("install this app")) {
+          triggerInstall('voice'); 
+
+        } else {
+          speak("You said: " + transcript);
+        }
+      };
+
+      rec.onend = () => voiceBtn.classList.remove("listening");
+      rec.onerror = () => voiceBtn.classList.remove("listening");
+
+      function speak(text) {
+        synth.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.pitch = 1;
+        utter.rate = 1.1;
+        if (availableVoices.length > 0) {
+          utter.voice = availableVoices[0];
+        }
+        synth.speak(utter);
+      }
+
+      voiceBtn.onclick = () => {
+        voiceBtn.classList.add("listening");
+        rec.start();
+      };
+    } else {
+      voiceBtn.onclick = () => alert("Web Speech API is not supported in this browser.");
+    }
+  </script>
+</body>
+</html>
