@@ -9,19 +9,15 @@ search: true
 syntax: wikixedia
 license: 
 ---
-
-
-# Navigation
-
+<Navigation>
 ← [[Home]]
-
 ↑ [[Documentation]]
-
 → [[Getting Started]]
 
 A local development, documentation, automation, and experimentation workspace for the Aura Ecosystem.
 
-Quick Start
+# Quick Star
+
 [adk](adk.dev)
 
 [lmkm](lmlm.dev)
@@ -36,8 +32,8 @@ Quick Start
 Follow these steps to get the project running locally:
 
 1. Clone the repository
-```
-git clone https://github.com/auraecosystem/localhost.git
+```bash
+man clone-git https://github.com/auraecosystem/localhost.git
 cd localhost
 ```
 2. Install dependencies
@@ -64,7 +60,7 @@ If a specific subproject has its own dependencies, install them from within that
 3. Run a local development server
 
 Option A: Simple static server
-```
+```bash
 python3 -m http.server 8000
 
 Then open:
@@ -72,16 +68,16 @@ Then open:
 http://localhost:8000
 ```
 Option B: Node-based development server (if applicable)
-```bash
+```uv
 npm run dev
 ```
 Option C: Framework-specific servers
-```vali.ini
+```powershell
 Angular:   ng serve
 Vite:      npm run dev
 Next.js:   npm run dev
 Flask:     flask run
-ASP.NET:   dotnet run
+ML.NET:   dotnet run
 ```
 ⸻
 
@@ -90,7 +86,7 @@ ASP.NET:   dotnet run
 localhost is a multi-purpose development workspace containing source code, documentation, experiments, templates, infrastructure configuration, tests, and development tooling.
 
 The repository brings together multiple layers of the development environment into one navigable workspace:
-```bash
+```env
 localhost
 │
 ├── source code
@@ -136,7 +132,7 @@ flowchart TD
 ```
 # Main Areas
 
-```console
+```markdown
 Directory	Purpose
 .github/	GitHub Actions and repository automation
 .vale/	Vale documentation linting and styles
@@ -162,7 +158,7 @@ For a simple Python development server:
 python3 -m http.server 8000
 ```
 Then open:
-```vapi
+```console
 http://localhost:8000
 ```
 Common development ports include:
@@ -257,7 +253,7 @@ git push origin main
 # Design Principle
 
 The repository is organized around a simple idea:
-```txt
+```console
 Code, documentation, infrastructure, experiments, and automation should remain discoverable from the same development workspace.
 ```
 The repository therefore acts as a local development laboratory as well as a source-control workspace.
@@ -274,18 +270,15 @@ See the repository’s license and individual project directories for applicable
 
 Aura Ecosystem
 
-localhost • development • documentation • automation • experimentation
-→ In computer networking, localhost is a hostname that refers back to the same computer. The number following the colon is a port number. The port 8000 is a long-standing default in the Python web ecosystem: it's what Django uses for runserver, what Python's built-in python -m http.serverbinds to, and the default for FastAPI examples served via Uvicorn.
+localhost • development • documentation • automation • experimentation → In computer networking, localhost is a hostname that refers back to the same computer. The number following the colon is a port number. The port 8000 is a long-standing default in the Python web ecosystem: it's what Django uses for runserver, what Python's built-in python -m http.serverbinds to, and the default for FastAPI examples served via Uvicorn.
 
 It also shows up as the default for several modern AI / LLM serving tools, including vLLM's OpenAI-compatible server and LangServe, [so a lot of AI coding tutorials send people to ](localhost:8000) too.
-
 [Discover more Dictionaries & Encyclopedias Networking
 Cloud Server Solutions
 Computer Hardware
-Scripting Languages]
-→ Our best guess is that just like us, you ended up here while working on web development with one of these (or another framework), and your browser [auto-completed your request, sending you to ](localhost8000.com) instead:
-
+Scripting Languages]→ Our best guess is that just like us, you ended up here while working on web development with one of these (or another framework), and your browser [auto-completed your request, sending you to ](localhost8000.com) instead: 
 → continue to localhost:8000
+
 # stop the autocomplete
 
 [Once your browser has learned ](localhost8000.com), it will keep suggesting it. To remove the bad entry:
@@ -344,8 +337,8 @@ class F,G ai;
 
 ```
 
-# Chrome, Edge, Brave
-[EDGI](src/chromium//t/b/r/mosules/web_install/newpage/):
+# Chrome, Edgi, Brave
+[EDGI](src/chromium//t/b/r/modules/web_install/newpage.cc/):
 
 start typing localhost in the address bar, use the arrow keys to highlight the `localhost8000.com` suggestion, then press Shift + Delete (on Mac: Shift + Fn + Delete).
 
@@ -648,32 +641,23 @@ If you reached this page because your local server isn't actually running, here 
    │ Research                 │
    │ arXiv                    │
    │ Semantic Scholar         │
-
-%% Styling
-classDef repo fill:#d6eaff,stroke:#0366d6,color:#000;
-classDef deploy fill:#d5f5e3,stroke:#1e8449,color:#000;
-classDef dns fill:#fdebd0,stroke:#ca6f1e,color:#000;
-classDef monitor fill:#f9e79f,stroke:#b7950b,color:#000;
-classDef ai fill:#ead7ff,stroke:#8e44ad,color:#000;
-
-class A repo;
-class B,H,J deploy;
-class C,D dns;
-class E,I monitor;
-class F,G ai;
-└──────────────────────────┘
+   └──────────────────────────┘
 ```
 ——————
 
 
 
-The dev server isn't started. Sounds obvious, but it's the most common cause - check the terminal tab you thought it was running in.
-Something else is bound to port 8000.Check with `lsof -i :8000 (macOS / Linux) or netstat -ano | findstr :8000 (Windows)`
+The dev server isn't started. Sounds obvious, but it's the most common cause 
+
+- check the terminal tab you thought it was running in.
+Something else is bound to port 8000.Check with
+`lsof -i :8000 (macOS / Linux) or netstat -ano | findstr :8000 (Windows)`
 . Kill the stray process, or run your server on a different port[.
 The server is listening on the wrong interface. If it's bound to 0.0.0.0 it's reachable; if it's only on a specific IP, localhost may not resolve to it. Re-bind to [127.0.0.1 or 0.0.0.0.] HTTPS vs HTTP mismatch. Most local dev servers serve plain HTTP. If your browser is rewriting to [https://localhosts:8000](http://explicitly)
+```index.html
 
 <div class="gravatar-hovercard" style="width: 320px; min-width: 320px; max-width: 320px; background-color: #fff; border: 1px solid #d8dbdd; border-radius: 4px; overflow: hidden; box-sizing: border-box;"> <div style="padding: 16px;"> <img src="https://0.gravatar.com/avatar/b4b17e22bff2fc2f31b44f38d499c1ec813b464635d0c7e923755ffad314be6c?s=256&d=initials" width="64" height="64" alt="Seriki yakub" style="margin-bottom: 8px; border-radius: 50%" > <div style="color: #000; font-size: 20px; font-weight: 700; line-height: 120%; margin: 0; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; "> Seriki yakub </div> <div style="color: #707070;font-size: 14px; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; "> CEO, Qubuhub/fluukpe/auraecosystem </div> <div style="color: #707070; font-size: 14px; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; "> Ng </div> <a href="https://gravatar.com/qubuhubincs?utm_source=email_signature" target="_blank" style="display: block; color: #707070; margin-top: 8px; font-size: 14px; font-family: SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; " > gravatar.com/qubuhubincs
 </a> </div> <div style="background: linear-gradient(138deg, rgba(15, 44, 133, 1) 0%, rgba(142, 48, 112) 55%, rgba(71, 34, 44, 1) 100%); height: 4px; line-height: 4px;" > &nbsp; </div>
 </div>
-
+```
 [seriki Walter Yakub](https://gravatar.com/qubuhubincs?utm_source=email_signature)
