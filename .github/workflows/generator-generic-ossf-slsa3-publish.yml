@@ -14,16 +14,16 @@ name: SLSA generic generator
 on:
   workflow_dispatch:
   release:
-    types: [created]
+    types: [created,prereleased,]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     outputs:
       digests: ${{ steps.hash.outputs.digests }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # ========================================================
       #
