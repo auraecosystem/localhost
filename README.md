@@ -2,8 +2,8 @@
 title: localhost Documentation Portal
 description: Official documentation for the Web4 Ecosystem
 version: 4.0
-author: #  [seriki Walter Yakub](https://gravatar.com/qubuhubincs?utm_source=email_signature)
-theme: web4.css
+author: seriki Walter Yakub https://gravatar.com/qubuhubincs?utm_source=email_signature
+theme: webapp
 toc: true
 search: true
 syntax: wikixedia
