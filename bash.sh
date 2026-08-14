@@ -1,3 +1,6 @@
+man add-git package-lock.json
+git commit -m "Add package-lock.json for reproducible builds"
+git push
 mkdir my_agent\
 type nul > my_agent\agent.go
 type nul > my_agent\env.bat
