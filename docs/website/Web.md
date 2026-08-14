@@ -124,3 +124,118 @@ Aura routes cognitive tasks through a tiered AI model architecture to balance pr
 | **G4 (e.g., GPT-5-mini)** | Advanced cognitive reasoning | Complex problem-solving, dynamic contextual responses, and heavy-lifting intelligence tasks. |
 
 [Author:seriki Walter yakub](https://0.gravatar.com/qubuhubincs?utm_source=email_signature)
+
+Install element test page
+
+Requires --enable-features=InstallElement,
+OR enabling about://flags/#web-app-install-element,
+OR an origin trial header for InstallElement
+
+Executes:
+
+
+      <install></install>
+    
+Executes:
+
+
+      <install installurl="https://mustjab.github.io/"></install>
+    
+Executes:
+
+
+      <install installurl="https://diek.us/bubble/" manifestid="https://diek.us/bubble/"></install>
+    
+DataError cases - manifest id validation (install element)
+
+1 param, background doc, NO id in manifest
+
+Executes:
+
+
+      <install installurl="https://amandabaker.github.io/pwa/web-install/index.html"></install>
+    
+2 params, background doc, YES id in manifest, mismatched input
+
+Executes:
+
+
+      <install installurl="https://mustjab.github.io/" manifestid="mismatched-manifest-id"></install>
+    
+2 params, background doc, NO id in manifest, mismatched input
+
+Executes:
+
+
+      <install installurl="https://amandabaker.github.io/pwa/web-install/index.html" manifestid="mismatched-manifest-id"></install>
+    
+More Error Cases
+
+2 params, background doc, invalid type for install url
+
+Executes:
+
+
+      <install installurl=12345 manifestid="https://diek.us/bubble/"></install>
+    
+2 params, background doc, invalid type for manifest id
+
+Executes:
+
+
+      <install installurl="https://diek.us/bubble/" manifestid=67890></install>
+    
+2 params, background doc, variable is a number for install url
+
+Executes:
+
+
+      <script>const numUrl = 99999;</script>
+      <install id="installVarNumberUrl" manifestid="https://diek.us/bubble/"></install>
+      <script>document.getElementById('installVarNumberUrl').setAttribute('installurl', numUrl);</script>
+    
+2 params, background doc, variable is a number for manifest id
+
+Executes:
+
+
+      <script>const numManifest = 88888;</script>
+      <install id="installVarNumberManifest" installurl="https://diek.us/bubble/"></install>
+      <script>document.getElementById('installVarNumberManifest').setAttribute('manifestid', numManifest);</script>
+    
+2 params, background doc, variable is null for install url
+
+Executes:
+
+
+      <script>const nullUrl = null;</script>
+      <install id="installVarNullUrl" manifestid="https://diek.us/bubble/"></install>
+      <script>document.getElementById('installVarNullUrl').setAttribute('installurl', nullUrl);</script>
+    
+2 params, background doc, variable is null for manifest id
+
+Executes:
+
+
+      <script>const nullManifest = null;</script>
+      <install id="installVarNullManifest" installurl="https://diek.us/bubble/"></install>
+      <script>document.getElementById('installVarNullManifest').setAttribute('manifestid', nullManifest);</script>
+    
+2 params, background doc, variable is undefined for install url
+
+Executes:
+
+
+      <script>let undefinedUrl;</script>
+      <install id="installVarUndefinedUrl" manifestid="https://diek.us/bubble/"></install>
+      <script>document.getElementById('installVarUndefinedUrl').setAttribute('installurl', undefinedUrl);</script>
+    
+2 params, background doc, variable is undefined for manifest id
+
+Executes:
+
+
+      <script>let undefinedManifest;</script>
+      <install id="installVarUndefinedManifest" installurl="https://diek.us/bubble/"></install>
+      <script>document.getElementById('installVarUndefinedManifest').setAttribute('manifestid', undefinedManifest);</script>
+    
