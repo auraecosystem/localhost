@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "localgpt-gen": {
-      "command": "localgpt-gen",
+      "command": "http://localhost:8080",
       "args": ["mcp-server"]
     }
   }
