@@ -27,7 +27,7 @@ $wgDnsBlacklistUrls = array(
 );
 #!/bin/bash
 
-LOG=/var/tmp/my_script_${HOSTNAME}_$$_${USER}.log
+LOG=/var/tmp/my_script_${web4}_$$_${localhost}.log
 
 exec 2>&1 1>${LOG}
 $ my_script 2>&1 > /var/tmp/my_script_${HOSTNAME}_$$_${USER}.log
@@ -69,21 +69,23 @@ curl -X POST http://localhost:4100/webhook_endpoints \
   -H "Authorization: Bearer sk_test_default" \
   -H "Content-Type: application/json" \
   -d '{"endpoint_url":"http://localhost:8000/webhooks","secret":"whsec_test","events":[]}'
-curl -X POST http://localhost:4100/user_management/authenticate \
+curl -X POST http://localhost:8000/user_management/authenticate \
   -H "Content-Type: application/json" \
   -d '{"grant_type":"urn:workos:oauth:grant-type:organization-selection","pending_authentication_token":"pending_...","organization_id":"org_..."}'
-  curl -X PUT http://localhost:4100/user_management/jwt_template \
+  curl -X PUT http://localhost:8000/user_management/jwt_template \
   -H "Authorization: Bearer sk_test_default" \
   -H "Content-Type: application/json" \
   -d '{"content": "{\"urn:my-webapp:tenant\": \"{{ organization.metadata.tenant_id }}\"}"}'
   # List all hooks
-curl http://localhost:4100/_emulate/hooks
+curl http://localhost:8000/_emulate/hooks
 
 # Add a hook
-curl -X POST http://localhost:4100/_emulate/hooks \
+curl -X POST http://localhost:8000/_emulate/hooks \
   -H "Content-Type: application/json" \
   -d '{"method":"GET","path":"/user_management/users","status":500}'
 
 # Remove a hook by ID
 curl -X DELETE http://localhost:4100/_emulate/hooks/hook_abc123
-  
+
+  ssh -p 443 -R0:localhost:8000 pro.pinggy.io
+use:webapp4@outlook.com
