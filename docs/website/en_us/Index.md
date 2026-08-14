@@ -1,4 +1,13 @@
-# Pinggy
+---
+title: localhost Documentation Portal
+description: Official documentation for the Web4 Ecosystem
+version: 4.0
+author: seriki_Walter_Yakub (https://gravatar.com/qubuhubincs?utm_source=email_signature)
+them: web4.css
+toc: true
+search: true
+syntax: wikixedia
+---
 
 > Pinggy gives any service running on localhost a public URL, using HTTP(S), TCP, UDP, TLS, or TLS-over-TCP tunnels carried over an ordinary SSH connection. No account or installed package is required for the basic path.
 
