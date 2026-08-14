@@ -1,0 +1,36 @@
+# Getting started with the AWS SDK for Java 2.x
+<a name="get-started"></a>
+
+The sections in this topic walk you through the essential steps to begin building Java applications that connect to AWS service. The sections cover setting up your development environment with Java and build tools like Maven or Gradle, configuring secure authentication to AWS, and creating your first working application through a hands-on tutorial. This beginner-friendly topic serves as your entry point to AWS development with Java, providing the foundation you'll need before exploring more advanced features.
+
+**Contents**
++ [Setting up the AWS SDK for Java 2.x](setup.md)
+  + [Setup overview](setup.md#setup-overview)
+  + [Install Java and a build tool to work with the AWS SDK for Java 2.x](setup-java-buildtool.md)
+  + [Set up an Apache Maven project that uses the AWS SDK for Java 2.x](setup-project-maven.md)
+    + [Prerequisites](setup-project-maven.md#prerequisitesmaven)
+    + [Create a Maven project](setup-project-maven.md#create-maven-project)
+    + [Configure the Java compiler for Maven](setup-project-maven.md#configure-maven-compiler)
+    + [Declare the SDK as a dependency](setup-project-maven.md#sdk-as-dependency)
+    + [Set dependencies for SDK modules](setup-project-maven.md#modules-dependencies)
+      + [Build the entire SDK into your project](setup-project-maven.md#build-the-entire-sdk-into-your-project)
+    + [Build your project](setup-project-maven.md#build-project)
+  + [Set up a Gradle project that uses the AWS SDK for Java 2.x](setup-project-gradle.md)
+  + [Set up a GraalVM Native Image project that uses the AWS SDK for Java 2.x](setup-project-graalvm.md)
+    + [Prerequisites](setup-project-graalvm.md#setup-graalvmnativeimage-prereq)
+    + [Create a project using the archetype](setup-project-graalvm.md#setup-graalvmnativeimage-project)
+    + [Build a native image](setup-project-graalvm.md#build-graalvmnativeimage-project)
++ [Authenticating with AWS using the AWS SDK for Java 2.x](get-started-auth.md)
+  + [Set up for authentication](get-started-auth.md#setup-auth)
+    + [1. Local development using short-term credentials](get-started-auth.md#setup-login)
+    + [2. Setup for single sign-on access for the SDK](get-started-auth.md#setup-credentials)
+    + [3. Sign in using the AWS CLI](get-started-auth.md#setup-login-sso)
+  + [Additional authentication options](get-started-auth.md#setup-additional)
++ [Creating a simple application using the AWS SDK for Java 2.x](get-started-tutorial.md)
+  + [Step 1: Set up for this tutorial](get-started-tutorial.md#get-started-setup)
+  + [Step 2: Create the project](get-started-tutorial.md#get-started-projectsetup)
+  + [Step 3: Write the code](get-started-tutorial.md#get-started-code)
+  + [Step 4: Build and run the application](get-started-tutorial.md#get-started-run)
+    + [Success](get-started-tutorial.md#get-started-success)
+    + [Cleanup](get-started-tutorial.md#cleanup)
+  + [Next steps](get-started-tutorial.md#get-started-next)
