@@ -1,14 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# This is a basic workflow to help you get started with Using Jscrambler Code Integrity Action.
-# It automates the protection of your JavaScript Applications, so you can run it whenever a new version of your application is built.
-# A Jscrambler account is required to use this Workflow.
-#
-# More info can be found here : https://docs.jscrambler.com/latest/code-integrity/documentation/github-ci-integration
-
 name: Jscrambler Code Integrity
 
 on:
@@ -31,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - run: npm install # env: shell: background:  name: 
+      - run: npm install # 
       - run: npm run build
       - name: Jscrambler Code Integrity
         id: jscrambler
