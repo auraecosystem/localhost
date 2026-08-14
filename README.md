@@ -7,7 +7,7 @@ theme: web4.css
 toc: true
 search: true
 syntax: wikixedia
-license: Apache-2.0
+license: 
 ---
 
 
