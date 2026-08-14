@@ -1,4 +1,3 @@
-
 import feedparser
 import os
 from datetime import datetime
@@ -12,7 +11,7 @@ def fetch_recent_posts(feed_url, max_posts=5):
     """Fetch recent blog posts from RSS/Atom feed"""
     feed = feedparser.parse(feed_url)
     posts = []
-    
+
     for entry in feed.entries[:max_posts]:
         posts.append({
             'title': entry.get('title', 'Untitled'),
