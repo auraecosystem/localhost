@@ -5,9 +5,9 @@ const octokit = new Octokit({
 });
 
 try {
-  const result = await octokit.request("GET /repos/{owner}/{repo}/issues", {
+  const result = await octokit.request("GET /repos/{owner}/{repo}/pages", {
       owner: "octocat",
-      repo: "Spoon-Knife",
+      repo: "auraecosystem",
     });
 
   const titleAndAuthor = result.data.map(issue => {title: issue.title, authorID: issue.user.id})
