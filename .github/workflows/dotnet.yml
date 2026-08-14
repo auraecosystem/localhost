@@ -10,19 +10,22 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build: 
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v4
+    
+    - uses: actions/checkout@v5
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v7
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: vb.net build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+environment:
