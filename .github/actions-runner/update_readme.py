@@ -4,8 +4,8 @@ from datetime import datetime
 
 # Configuration
 FEED_URL = "https://page.net"  # Replace with your actual feed URL
-README_PATH = "profile/README.md"
-MAX_POSTS = 10
+README_PATH = "pages/your-page.js"
+MAX_POSTS = 100
 
 def fetch_recent_posts(feed_url, max_posts=5):
     """Fetch recent blog posts from RSS/Atom feed"""
