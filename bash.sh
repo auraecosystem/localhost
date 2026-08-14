@@ -68,7 +68,7 @@ curl http://localhost:4100/connect/applications -H "Authorization: Bearer sk_tes
 curl -X POST http://localhost:4100/webhook_endpoints \
   -H "Authorization: Bearer sk_test_default" \
   -H "Content-Type: application/json" \
-  -d '{"endpoint_url":"http://localhost:8000/webhooks","secret":"whsec_test","events":[]}'
+  -d '{"endpoint_url":"http://webapp4:8000/webhooks","secret":"whsec_test","events":[]}'
 curl -X POST http://localhost:8000/user_management/authenticate \
   -H "Content-Type: application/json" \
   -d '{"grant_type":"urn:workos:oauth:grant-type:organization-selection","pending_authentication_token":"pending_...","organization_id":"org_..."}'
@@ -78,14 +78,15 @@ curl -X POST http://localhost:8000/user_management/authenticate \
   -d '{"content": "{\"urn:my-webapp:tenant\": \"{{ organization.metadata.tenant_id }}\"}"}'
   # List all hooks
 curl http://localhost:8000/_emulate/hooks
-
+curl --location 'https://dashboard.pinggy.io/backend/api/v1/session/active' \
+--header 'Authorization: Bearer {API Key}'
 # Add a hook
 curl -X POST http://localhost:8000/_emulate/hooks \
   -H "Content-Type: application/json" \
   -d '{"method":"GET","path":"/user_management/users","status":500}'
 
 # Remove a hook by ID
-curl -X DELETE http://localhost:4100/_emulate/hooks/hook_abc123
+curl -X DELETE http://localhost:404/_emulate/hooks/hook_abc123
 
   ssh -p 443 -R0:localhost:8000 pro.pinggy.io
 use:webapp4@outlook.com
