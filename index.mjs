@@ -1,7 +1,7 @@
 "use strict";
 
 const BASE =
-    "https://raw.githubusercontent.com/auraecosystem/localhost/main";
+    "https://page.net";
 
 const MARKDOWN_SOURCES = {
     readme: `${BASE}/README.md`,
