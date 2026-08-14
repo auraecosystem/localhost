@@ -1,2 +1,3 @@
-/* example.net *\
+/* example.net *\#bash 
  
+ssh -p 443 -R0:localhost:8000 pro.pinggy.io
